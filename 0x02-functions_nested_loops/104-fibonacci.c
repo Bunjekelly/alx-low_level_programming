@@ -1,35 +1,50 @@
-#include "holberton.h"
+#include <stdio.h>
 
 /**
- * print_number - print an integer, without using long, arrays, or pointers
- * @n: number to be printed
+ * main - Prints the first 98 Fibonacci numbers
+ *
+ * Return: Always 0.
  */
-
-void print_number(int n)
+int main(void)
 {
-	unsigned int tens, digit, positive = n;
-	double t_beg = 1;
+	int c, boolean, boolean2;
+	long int n1, n2, fn, fn2, n11, n22;
 
-	if (n == 0)
-		_putchar('0');
-	else
+	n1 = 1;
+	n2 = 2;
+	boolean =  boolean2 = 1;
+	printf("%ld, %ld", n1, n2);
+	for (c = 0; c < 96; c++)
 	{
-		if (n < 0)
+		if (boolean)
 		{
-			positive = n * -1;
-			_putchar('-');
+			fn = n1 + n2;
+			printf(", %ld", fn);
+			n1 = n2;
+			n2 = fn;
 		}
-
-		while (t_beg <= positive)
-			t_beg *= 10;
-		tens = t_beg / 10;
-
-		while (tens >= 1)
+		else
 		{
-			digit = positive / tens;
-			_putchar(digit + '0');
-			positive = (positive - (tens * digit));
-			tens /= 10;
+			if (boolean2)
+			{
+				n11 = n1 % 1000000000;
+				n22 = n2 % 1000000000;
+				n1 = n1 / 1000000000;
+				n2 = n2 / 1000000000;
+				boolean2 = 0;
+			}
+			fn2 = (n11 + n22);
+			fn = n1 + n2 + (fn2 / 1000000000);
+			printf(", %ld", fn);
+			printf("%ld", fn2 % 1000000000);
+			n1 = n2;
+			n11 = n22;
+			n2 = fn;
+			n22 = (fn2 % 1000000000);
 		}
+		if (((n1 + n2) < 0) && boolean == 1)
+			boolean = 0;
 	}
+	printf("\n");
+	return (0);
 }
