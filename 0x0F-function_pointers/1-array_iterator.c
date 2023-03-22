@@ -1,7 +1,7 @@
 #include "function_pointers.h"
 #include <stdio.h>
 
-/*
+/**
  * array iterator - prints each array element on a new line
  * @array: array
  * @size: how many elements to print
