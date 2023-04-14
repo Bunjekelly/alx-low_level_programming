@@ -13,7 +13,8 @@
 
 void copy_file(char *file_from, char *file_to)
 {
-	int f1, f2, fr, fw;
+	int f1, f2;
+	ssize_t fr, fw;
 	char buff[1024];
 
 	f1 = open(file_from, O_RDONLY);
@@ -67,7 +68,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	copy_file(argv[1], argv[2]);
