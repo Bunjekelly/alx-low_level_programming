@@ -19,13 +19,13 @@ void copy_file(char *file_from, char *file_to)
 	f1 = open(file_from, O_RDONLY);
 	if (f1 == -1)
 	{
-		printf("Error: can't read from file %s\n", file_from);
+		dprintf(2, "Error: can't read from file %s\n", file_from);
 		exit(98);
 	}
 	f2 = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (f2 == -1)
 	{
-		printf("Error: can't write into file %s\n", file_to);
+		dprintf(2, "Error: can't write into file %s\n", file_to);
 		exit(99);
 	}
 	fr = read(f1, buff, 1024);
@@ -34,23 +34,23 @@ void copy_file(char *file_from, char *file_to)
 		fw = write(f2, buff, fr);
 		if (fw == -1)
 		{
-			printf("Error: can't write into %s\n", file_to);
+			dprintf(2, "Error: can't write into %s\n", file_to);
 			exit(99);
 		}
 	}
 	if (fr == -1)
 	{
-		printf("Error: can't read file from %s\n", file_from);
+		dprintf(2, "Error: can't read file from %s\n", file_from);
 		exit(98);
 	}
 	if (close(f1) == -1)
 	{
-		printf("Error: can't close fd %d\n", f1);
+		dprintf(2, "Error: can't close fd %d\n", f1);
 		exit(100);
 	}
 	if (close(f2) == -1)
 	{
-		printf("Error: can't close fd %d\n", f2);
+		dprintf(2, "Error: can't close fd %d\n", f2);
 		exit(100);
 	}
 }
