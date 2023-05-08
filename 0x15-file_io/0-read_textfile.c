@@ -7,7 +7,7 @@
  * @filename: the pointer
  *
  * Return: actual number of letters it could read and print
- * or 0 if file can't be opened, or fails or filename is NULL
+ * or 0 if file can't be opened, or filename is NULL
  */
 
 ssize_t read_textfile(const char *filename, size_t letters)
@@ -15,7 +15,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t fo, fr;
 	char *buff;
 
-
+	if (filename == NULL)
+		return (0);
 	fo = open(filename, O_RDONLY);
 
 	if (fo == -1)
