@@ -150,7 +150,7 @@ void d_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - dislays the ABI version of an ELF header.
+ * d_abi - dislays the ABI version of an ELF header.
  * @e_ident: pointer to an array containing the ELF ABI version.
  */
 
