@@ -1,0 +1,15 @@
+#variables declaration
+CC = gcc
+SRC = main.c school.c
+Objects = $(SRC:.c=.o)
+
+all: school
+
+school: $(Objects)
+	$(CC) -o school $^
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+clean:
+	rm -f $(Objects)
